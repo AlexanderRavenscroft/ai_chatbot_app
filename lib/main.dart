@@ -1,8 +1,16 @@
+import 'package:ai_chatbot_flask/pages/chat_page.dart';
+import 'package:ai_chatbot_flask/services/chat_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
+
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ChatProvider(),
+      child: MyApp()
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,51 +19,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Simple Counter App')),
-        body: Center(
-          child: CounterButton(),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: ChatPage(),
     );
   }
 }
 
-class CounterButton extends StatefulWidget {
-  const CounterButton({super.key});
-
-  @override
-  CounterButtonState createState() => CounterButtonState();
-}
-
-class CounterButtonState extends State<CounterButton> {
-  String counter = 'Welcome Jelly';
-
-  Future<void> _incrementCounter() async {
-    try {
-  final response = await http.get(Uri.parse('http://192.168.0.17:50162/increment'));
-  if (response.statusCode == 200) {
-    setState(() {
-      counter = response.body;
-    });
-  }
-} on Exception catch (e) {
-    print(e);
-}
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('Counter: $counter', style: TextStyle(fontSize: 24)),
-        SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: _incrementCounter,
-          child: Text('Increment'),
-        ),
-      ],
-    );
-  }
-}
