@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class ChatProvider extends ChangeNotifier{
 
-void sendMessage(String messageText) {
-  Message message = Message(message: messageText, isAI: false);
+void sendMessage(String messageText, bool isAI) {
+  Message message = Message(message: messageText, isAI: isAI);
   Message.messages.add(message);
   notifyListeners();
 }

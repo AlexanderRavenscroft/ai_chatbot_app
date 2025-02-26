@@ -2,6 +2,7 @@ import 'package:ai_chatbot_flask/components/error_dialog.dart';
 import 'package:ai_chatbot_flask/components/message_list.dart';
 import 'package:ai_chatbot_flask/components/message_textfield.dart';
 import 'package:ai_chatbot_flask/services/chat_provider.dart';
+import 'package:ai_chatbot_flask/services/chatbot_service.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -77,53 +78,15 @@ class ChatPage extends StatelessWidget {
   }
   void _sendMessage(BuildContext context) {
     if(_messageController.text.isNotEmpty) {
-      Provider.of<ChatProvider>(context, listen: false).sendMessage(_messageController.text);      _messageController.clear();
+      Provider.of<ChatProvider>(context, listen: false).sendMessage(_messageController.text, false);
+      callOpenAI(_messageController.text, context);
+      _messageController.clear();
     }
     else {
       showDialog(
         context: context, 
-        builder:(context) =>  ErrorDialog (dialogText: 'Please, enter a message'),
+        builder:(context) => ErrorDialog(dialogText: 'Please, enter a message'),
       );
     }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-class CounterButton extends StatefulWidget {
-  const CounterButton({super.key});
-
-  @override
-  CounterButtonState createState() => CounterButtonState();
-}
-
-class CounterButtonState extends State<CounterButton> {
-  String message = 'Wiadomosc 1';
-  int usrInput = 8;
-
-  // Future<void> _incrementCounter() async {
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.0.17:50162/increment?usrInput=$usrInput'));
-  //     if (response.statusCode == 200) {
-  //       setState(() {
-  //         message = response.body;
-  //       });
-  //     }
-  //   } on Exception catch (e) {
-  //     debugPrint(e.toString());
-  //   }
-  // }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
