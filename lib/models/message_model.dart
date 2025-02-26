@@ -8,4 +8,6 @@ class Message{
   });
 
   static List<Message> messages = [];
+
+  static List <Map<String, dynamic>> chatbotMessages = [];
 }

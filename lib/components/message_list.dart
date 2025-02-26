@@ -1,4 +1,5 @@
 import 'package:ai_chatbot_flask/components/message_bubble.dart';
+import 'package:ai_chatbot_flask/services/chatbot_service.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_chatbot_flask/models/message_model.dart';
 
@@ -20,6 +21,10 @@ class _MessageListState extends State<MessageList> {
           child: MessageBubble(
             text: Message.messages[index].message,
             isAI: Message.messages[index].isAI ? true : false,
+            showLoading: 
+            index == loadingIndex 
+            ? true 
+            : false,
           ),
         );
        }
