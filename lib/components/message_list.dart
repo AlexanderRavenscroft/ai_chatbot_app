@@ -11,23 +11,29 @@ class MessageList extends StatefulWidget {
 }
 
 class _MessageListState extends State<MessageList> {
+  
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Message.messages.length,
-      itemBuilder: (context, index) {
-        return Align(
-          alignment: (Message.messages[index].isAI) ? Alignment.topLeft : Alignment.topRight,
-          child: MessageBubble(
-            text: Message.messages[index].message,
-            isAI: Message.messages[index].isAI ? true : false,
-            showLoading: 
-            index == loadingIndex 
-            ? true 
-            : false,
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            itemCount: Message.messages.length,
+            itemBuilder: (context, index) {
+              return Align( 
+                alignment: (Message.messages[index].isAI) ? Alignment.topLeft : Alignment.topRight,
+                child: MessageBubble(
+                  text: Message.messages[index].message,
+                  isAI: Message.messages[index].isAI ? true : false,
+                ),
+              );
+            },
           ),
-        );
-       }
-     );
+        ),
+        (isLoading)
+        ? CircularProgressIndicator()
+        : SizedBox.shrink(),
+      ],
+    );
   }
 }

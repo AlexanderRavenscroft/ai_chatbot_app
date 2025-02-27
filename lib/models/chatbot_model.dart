@@ -1,13 +1,13 @@
 class OpenAIClient {
+  // Main settings
   final String model;
   final String preTrain;
-
   final int maxTokens;
 
+  // Params
   final double temperature;
   final double frequencyPenalty;
   final double presencePenalty;
-
   final bool storeMessages;
 
   OpenAIClient({

@@ -9,12 +9,12 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 
 bool isLoading = false;
-int loadingIndex = -1;
+
 void callOpenAI(String userMessage, BuildContext context) async {
-
+  // Start loading => Show loading indicator
   isLoading = true; 
-  loadingIndex = Message.messages.length;
 
+  // API call link
   var url = Uri.parse('https://api.openai.com/v1/chat/completions');
 
   // Store API key in .env file
@@ -25,12 +25,13 @@ void callOpenAI(String userMessage, BuildContext context) async {
     model: "gpt-4o-mini", 
     preTrain: "preTrain",
     maxTokens: 150, 
-    temperature: 1, 
+    temperature: 0, 
     frequencyPenalty: 0, 
     presencePenalty: 0, 
     storeMessages: true,
   );
 
+  // Fetch data
   try {
     var response = await http.post(
       url,
@@ -52,7 +53,7 @@ void callOpenAI(String userMessage, BuildContext context) async {
     
     final decodedResponse = jsonDecode(response.body);
     final chatbotResponse = decodedResponse['choices'][0]['message']['content'];
-    print(chatbotResponse);
+
     if(context.mounted) {
       Provider.of<ChatProvider>(context, listen: false).sendMessage(chatbotResponse, true);
     }
@@ -64,7 +65,7 @@ void callOpenAI(String userMessage, BuildContext context) async {
       );
     }
   } finally {
-    // loadingIndex = -1;
+    // Stop loading => Show message bubble
     isLoading = false;
   }
 }

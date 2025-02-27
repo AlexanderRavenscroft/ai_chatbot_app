@@ -13,6 +13,8 @@ class ErrorDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
+
+      // Title
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -33,6 +35,7 @@ class ErrorDialog extends StatelessWidget {
           ),
         ],
       ),
+      // Content
       content: Text(
         dialogText, 
         textAlign: TextAlign.center,
@@ -59,11 +62,11 @@ class ErrorDialog extends StatelessWidget {
           child: Text(
             'OK',
             textAlign: TextAlign.center,
-              style: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: MediaQuery.of(context).size.height * 0.02,
-                fontWeight: FontWeight.bold,
-              ),
+            style: TextStyle(
+              color: AppColors.primaryText,
+              fontSize: MediaQuery.of(context).size.height * 0.02,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],

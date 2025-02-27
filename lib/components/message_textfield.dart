@@ -10,17 +10,17 @@ class MessageTextfield extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-       enabledBorder: OutlineInputBorder(
-         borderSide: BorderSide(color: AppColors.descriptionText),
-       ),
-       focusedBorder: OutlineInputBorder(
-         borderSide: BorderSide(color: AppColors.primary),
-       ),
-       fillColor: AppColors.secondary,
-       filled: true,
-       hintText: 'Enter a message..',
-       hintStyle: TextStyle(color: AppColors.descriptionText),
-     ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.descriptionText),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primary),
+        ),
+        fillColor: AppColors.secondary,
+        filled: true,
+        hintText: 'Enter a message..',
+        hintStyle: TextStyle(color: AppColors.descriptionText),
+      ),
     );
   }
 }
