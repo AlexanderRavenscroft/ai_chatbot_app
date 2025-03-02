@@ -1,4 +1,5 @@
 import 'package:ai_chatbot_flask/components/error_dialog.dart';
+import 'package:ai_chatbot_flask/components/menu_drawer.dart';
 import 'package:ai_chatbot_flask/components/message_list.dart';
 import 'package:ai_chatbot_flask/components/message_textfield.dart';
 import 'package:ai_chatbot_flask/components/slow_mode_timer.dart';
@@ -28,6 +29,7 @@ class ChatPage extends StatelessWidget {
         foregroundColor: AppColors.secondaryText,
       ),
 
+      drawer: MenuDrawer(),
       // Body
       body: Center(
         child: Column(

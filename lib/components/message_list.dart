@@ -11,7 +11,6 @@ class MessageList extends StatefulWidget {
 }
 
 class _MessageListState extends State<MessageList> {
-  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,8 +19,10 @@ class _MessageListState extends State<MessageList> {
           child: ListView.builder(
             itemCount: Message.messages.length,
             itemBuilder: (context, index) {
-              return Align( 
-                alignment: (Message.messages[index].isAI) ? Alignment.topLeft : Alignment.topRight,
+              return Align(
+                alignment: (Message.messages[index].isAI)
+                    ? Alignment.topLeft
+                    : Alignment.topRight,
                 child: MessageBubble(
                   text: Message.messages[index].message,
                   isAI: Message.messages[index].isAI ? true : false,
@@ -30,9 +31,7 @@ class _MessageListState extends State<MessageList> {
             },
           ),
         ),
-        (isLoading)
-        ? CircularProgressIndicator()
-        : SizedBox.shrink(),
+        (isLoading) ? CircularProgressIndicator() : SizedBox.shrink(),
       ],
     );
   }
