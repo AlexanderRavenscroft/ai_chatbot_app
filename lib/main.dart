@@ -1,5 +1,6 @@
 import 'package:ai_chatbot_flask/pages/chat_page.dart';
 import 'package:ai_chatbot_flask/services/chat_provider.dart';
+import 'package:ai_chatbot_flask/services/picture_provider.dart';
 import 'package:ai_chatbot_flask/services/timer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ Future main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => ChatProvider()),
         ChangeNotifierProvider(create: (context) => TimerProvider()),
+        ChangeNotifierProvider(create: (context) => PictureProvider()),
       ],
       child: MyApp()
     ),

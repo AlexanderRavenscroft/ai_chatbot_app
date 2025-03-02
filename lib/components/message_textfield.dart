@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class MessageTextfield extends StatelessWidget {
   final TextEditingController controller;
-  const MessageTextfield({super.key, required this.controller});
+  final String hintText;
+  const MessageTextfield({super.key, required this.controller, required this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class MessageTextfield extends StatelessWidget {
         ),
         fillColor: AppColors.secondary,
         filled: true,
-        hintText: 'Enter a message..',
+        hintText: hintText,
         hintStyle: TextStyle(color: AppColors.descriptionText),
       ),
     );

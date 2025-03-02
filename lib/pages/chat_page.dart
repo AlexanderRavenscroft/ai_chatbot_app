@@ -64,6 +64,7 @@ class ChatPage extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * 0.075,
                           width: MediaQuery.of(context).size.width * 0.75,
                           child: MessageTextfield(
+                            hintText: 'Enter a message...',
                             controller: _messageController,
                           ),
                         ),

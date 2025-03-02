@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
-
+import 'dart:io';
 class UserModel {
-  final String name;
-  final Image image;
+  String name;
+  File? image;
 
   UserModel({
     required this.name,
     required this.image,
   });
+  static var user = UserModel(name: 'Your name', image: null);
+  static var userChatbot = UserModel(name: 'AI chatbot', image: null);
 }
