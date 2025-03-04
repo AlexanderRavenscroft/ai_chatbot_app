@@ -6,7 +6,7 @@ class ChatProvider extends ChangeNotifier{
   void sendMessage(String messageText, bool isAI) {
     Message message = Message(message: messageText, isAI: isAI);
     Message.messages.add(message);
-    Message.chatbotMessages.add(
+       Message.chatbotMessages.add(
       {
         'role': isAI ? 'assistant' : 'user',
         'content': messageText,

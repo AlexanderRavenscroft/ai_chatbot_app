@@ -1,5 +1,6 @@
 import 'package:ai_chatbot_flask/models/user_model.dart';
-import 'package:ai_chatbot_flask/services/picture_provider.dart';
+import 'package:ai_chatbot_flask/services/providers/name_provider.dart';
+import 'package:ai_chatbot_flask/services/providers/picture_provider.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,8 +25,8 @@ class MessageBubble extends StatelessWidget {
             alignment: isAI?  Alignment.topLeft : Alignment.topRight,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
-              child: Consumer<PictureProvider>(
-                builder: (context, pictureProvider, child) {
+              child: Consumer<NameProvider>(
+                builder: (context, nameProvider, child) {
                   return Text(
                     isAI ? UserModel.userChatbot.name : UserModel.user.name,
                     style: TextStyle(

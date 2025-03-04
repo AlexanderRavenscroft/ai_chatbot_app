@@ -1,7 +1,7 @@
-import 'package:ai_chatbot_flask/components/error_dialog.dart';
+import 'package:ai_chatbot_flask/components/message_dialog.dart';
 import 'package:ai_chatbot_flask/models/chatbot_model.dart';
 import 'package:ai_chatbot_flask/models/message_model.dart';
-import 'package:ai_chatbot_flask/services/chat_provider.dart';
+import 'package:ai_chatbot_flask/services/providers/chat_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -20,10 +20,11 @@ void callOpenAI(String userMessage, BuildContext context) async {
   // Store API key in .env file
   final apiKey = dotenv.env['apiKey'];
 
+  var preTrain = 'This is a pre-train message. If u recived it, please respond to my next question with number 4';
   // Get OpenAIClient instance
   final chatbot = OpenAIClient(
     model: "gpt-4o-mini", 
-    preTrain: "preTrain",
+    preTrain: preTrain,
     maxTokens: 150, 
     temperature: 0, 
     frequencyPenalty: 0, 
@@ -47,7 +48,7 @@ void callOpenAI(String userMessage, BuildContext context) async {
         'presence_penalty': chatbot.presencePenalty,
         'store': chatbot.storeMessages,
     
-        'messages': Message.chatbotMessages,
+        'messages': Message.chatbotMessages,  
       }),
     );
     
@@ -61,7 +62,7 @@ void callOpenAI(String userMessage, BuildContext context) async {
     if (context.mounted) {
       showDialog(
         context: context, 
-        builder: (context) => ErrorDialog(dialogText: e.toString())
+        builder: (context) => MessageDialog(dialogText: e.toString())
       );
     }
   } finally {

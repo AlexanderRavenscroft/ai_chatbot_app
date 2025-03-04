@@ -1,9 +1,9 @@
 import 'package:ai_chatbot_flask/themes/themes.dart';
 import 'package:flutter/material.dart';
 
-class ErrorDialog extends StatelessWidget {
+class MessageDialog extends StatelessWidget {
   final String dialogText;
-  const ErrorDialog ({super.key, required this.dialogText});
+  const MessageDialog ({super.key, required this.dialogText});
 
   @override
   Widget build(BuildContext context) {

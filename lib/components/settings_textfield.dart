@@ -1,4 +1,4 @@
-import 'package:ai_chatbot_flask/services/picture_provider.dart';
+import 'package:ai_chatbot_flask/services/providers/name_provider.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +32,7 @@ class SettingsTextfield extends StatelessWidget {
         fontSize: MediaQuery.of(context).size.height * 0.025,
       ),
       onChanged: (value) =>
-        Provider.of<PictureProvider>(context, listen: false).refreshName(isAI, value)
+        Provider.of<NameProvider>(context, listen: false).refreshName(isAI, value)
     );
   }
 }

@@ -20,45 +20,50 @@ class MenuDrawer extends StatelessWidget {
               // DRAWER ICON
               DrawerHeader(
                 child: Center(
-                    child: Icon(
-                  Icons.chat,
-                  size: MediaQuery.of(context).size.height * 0.1,
-                  color: AppColors.descriptionText,
+                    child: Padding(
+                  padding: EdgeInsets.only(
+                      right: MediaQuery.of(context).size.width * 0.06),
+                  child: Icon(
+                    AppIcons.robot,
+                    size: MediaQuery.of(context).size.height * 0.1,
+                    color: AppColors.descriptionText,
+                  ),
                 )),
               ),
 
               // HOME
               MenuDrawerListTile(
                 text: 'Home',
-                icon: Icons.home,
+                icon: AppIcons.home,
                 onPressed: () => Navigator.pop(context),
               ),
 
               // AI SETTINGS
               MenuDrawerListTile(
                 text: 'AI Settings',
-                icon: Icons.settings,
+                icon: AppIcons.settings,
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AISettingsPage(),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AISettingsPage(),
+                    ),
+                  );
                 },
               ),
 
               // APP INFO
               MenuDrawerListTile(
                 text: 'App Info',
-                icon: Icons.info,
+                icon: AppIcons.info,
                 onPressed: () => Navigator.pop(context),
               ),
 
               // AUTHOR SECTION
               MenuDrawerListTile(
                 text: 'About Author',
-                icon: Icons.person_add_rounded,
+                icon: AppIcons.raven,
                 onPressed: () => Navigator.pop(context),
               ),
             ],
@@ -67,14 +72,15 @@ class MenuDrawer extends StatelessWidget {
           // USER SETTINGS
           MenuDrawerListTile(
             text: 'Your Profile',
-            icon: Icons.person,
+            icon: AppIcons.person,
             onPressed: () {
               Navigator.pop(context);
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => UserSettingsPage(),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserSettingsPage(),
+                ),
+              );
             },
           ),
         ],

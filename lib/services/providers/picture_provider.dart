@@ -9,22 +9,12 @@ class PictureProvider extends ChangeNotifier {
   Future<void> pickImage(bool isAI) async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      if(isAI) {
+      if (isAI) {
         UserModel.userChatbot.image = File(pickedFile.path);
-      }
-      else {
+      } else {
         UserModel.user.image = File(pickedFile.path);
       }
       notifyListeners();
     }
-  }
-
-  void refreshName(bool isAI, value) {
-    if(isAI) {
-      UserModel.userChatbot.name = value;
-    } else {
-      UserModel.user.name = value;
-    }
-    notifyListeners();
   }
 }

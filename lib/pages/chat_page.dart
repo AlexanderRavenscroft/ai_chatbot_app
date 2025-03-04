@@ -1,11 +1,11 @@
-import 'package:ai_chatbot_flask/components/error_dialog.dart';
+import 'package:ai_chatbot_flask/components/message_dialog.dart';
 import 'package:ai_chatbot_flask/components/menu_drawer.dart';
 import 'package:ai_chatbot_flask/components/message_list.dart';
 import 'package:ai_chatbot_flask/components/message_textfield.dart';
 import 'package:ai_chatbot_flask/components/slow_mode_timer.dart';
-import 'package:ai_chatbot_flask/services/chat_provider.dart';
+import 'package:ai_chatbot_flask/services/providers/chat_provider.dart';
 import 'package:ai_chatbot_flask/services/chatbot_service.dart';
-import 'package:ai_chatbot_flask/services/timer_provider.dart';
+import 'package:ai_chatbot_flask/services/providers/timer_provider.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -122,14 +122,14 @@ class ChatPage extends StatelessWidget {
       else {
         showDialog(
           context: context, 
-          builder:(context) => ErrorDialog(dialogText: 'Please, enter a message'),
+          builder:(context) => MessageDialog(dialogText: 'Please, enter a message'),
         );
       }
     }
     else {
       showDialog(
         context: context, 
-        builder:(context) => ErrorDialog(dialogText: 'Please, wait out the timeout'),
+        builder:(context) => MessageDialog(dialogText: 'Please, wait out the timeout'),
       );
     }
   }

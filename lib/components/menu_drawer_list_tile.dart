@@ -21,7 +21,7 @@ class MenuDrawerListTile extends StatelessWidget {
       title: Text(
         text,
         style: TextStyle(
-          fontSize:  MediaQuery.of(context).size.height * 0.03,
+          fontSize: MediaQuery.of(context).size.height * 0.03,
         ),
       ),
       leading: Icon(icon),
