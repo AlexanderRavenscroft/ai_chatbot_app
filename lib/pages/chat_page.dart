@@ -3,8 +3,10 @@ import 'package:ai_chatbot_flask/components/menu_drawer.dart';
 import 'package:ai_chatbot_flask/components/message_list.dart';
 import 'package:ai_chatbot_flask/components/message_textfield.dart';
 import 'package:ai_chatbot_flask/components/slow_mode_timer.dart';
+import 'package:ai_chatbot_flask/models/user_model.dart';
 import 'package:ai_chatbot_flask/services/providers/chat_provider.dart';
 import 'package:ai_chatbot_flask/services/chatbot_service.dart';
+import 'package:ai_chatbot_flask/services/providers/name_provider.dart';
 import 'package:ai_chatbot_flask/services/providers/timer_provider.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,11 @@ class ChatPage extends StatelessWidget {
 
       // AppBar
       appBar: AppBar(
-        title: Text('AI Chatbot'),
+        title: Consumer<NameProvider>(
+          builder: (context, nameProvider, child) {
+            return Text(UserModel.userChatbot.name);
+          }
+        ),
         scrolledUnderElevation: 0,
         centerTitle: true,
         backgroundColor: AppColors.secondary,

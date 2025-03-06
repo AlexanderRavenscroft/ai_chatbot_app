@@ -1,7 +1,6 @@
 class OpenAIClient {
   // Main settings
   final String model;
-  final String preTrain;
   final int maxTokens;
 
   // Params
@@ -12,7 +11,6 @@ class OpenAIClient {
 
   OpenAIClient({
     required this.model,
-    required this.preTrain,
     required this.maxTokens,
     required this.temperature,
     required this.frequencyPenalty,

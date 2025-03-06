@@ -10,6 +10,9 @@ import 'package:provider/provider.dart';
 
 bool isLoading = false;
 
+// Default temperature
+double chatbotTemperature = 0;
+
 void callOpenAI(String userMessage, BuildContext context) async {
   // Start loading => Show loading indicator
   isLoading = true; 
@@ -20,11 +23,9 @@ void callOpenAI(String userMessage, BuildContext context) async {
   // Store API key in .env file
   final apiKey = dotenv.env['apiKey'];
 
-  var preTrain = 'This is a pre-train message. If u recived it, please respond to my next question with number 4';
   // Get OpenAIClient instance
   final chatbot = OpenAIClient(
     model: "gpt-4o-mini", 
-    preTrain: preTrain,
     maxTokens: 150, 
     temperature: 0, 
     frequencyPenalty: 0, 

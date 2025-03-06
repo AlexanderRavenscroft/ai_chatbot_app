@@ -1,4 +1,5 @@
 import 'package:ai_chatbot_flask/components/message_dialog.dart';
+import 'package:ai_chatbot_flask/components/settings_slider.dart';
 import 'package:ai_chatbot_flask/components/settings_textfield.dart';
 import 'package:ai_chatbot_flask/models/message_model.dart';
 import 'package:ai_chatbot_flask/services/providers/picture_provider.dart';
@@ -14,6 +15,7 @@ class AISettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, // Prevent keyboard overflow
       backgroundColor: AppColors.background,
 
       // AppBar
@@ -117,14 +119,14 @@ class AISettingsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05
-              ),
+                  horizontal: MediaQuery.of(context).size.width * 0.05),
               child: Stack(
                 children: [
                   Center(
                     child: Column(
                       children: [
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
                         Text(
                           'Custom Training: ',
                           style: TextStyle(
@@ -133,7 +135,6 @@ class AISettingsPage extends StatelessWidget {
                                 MediaQuery.of(context).size.height * 0.025,
                           ),
                         ),
-
                         Expanded(
                           child: Center(
                             child: Container(
@@ -148,60 +149,78 @@ class AISettingsPage extends StatelessWidget {
                                   keyboardType: TextInputType.multiline,
                                   style: TextStyle(
                                     color: AppColors.secondaryText,
-                                    fontSize: MediaQuery.of(context).size.height * 0.022,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.022,
                                   ),
                                   decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.transparent),
+                                      borderSide:
+                                          BorderSide(color: Colors.transparent),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.transparent),
+                                      borderSide:
+                                          BorderSide(color: Colors.transparent),
                                     ),
-                                    hintText: 'Enter your custom instructions here...',
-                                    hintStyle: TextStyle(color: AppColors.descriptionText),
-                                  ),                              
+                                    hintText:
+                                        'Enter your custom instructions here...',
+                                    hintStyle: TextStyle(
+                                        color: AppColors.descriptionText),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                                          SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    child: TextButton(
-                      style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.06,
+                          child: TextButton(
+                            style: ButtonStyle(
+                              shape: WidgetStatePropertyAll(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              backgroundColor: WidgetStatePropertyAll(
+                                AppColors.primary,
+                              ),
+                            ),
+                            onPressed: () {
+                              if (_preTrainController.text.isNotEmpty) {
+                                Message.chatbotMessages.removeWhere(
+                                    (item) => item['role'] == 'developer');
+                                Message.chatbotMessages.add({
+                                  'role': 'developer',
+                                  'content': _preTrainController.text
+                                });
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => MessageDialog(
+                                    dialogText: 'Training successful',
+                                    type: 'success',
+                                  ),
+                                );
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => MessageDialog(
+                                    dialogText: 'Please, type something',
+                                  ),
+                                );
+                              }
+                              print(Message.chatbotMessages);
+                            },
+                            child: Text(
+                              'Apply Training',
+                              style: TextStyle(
+                                color: AppColors.primaryText,
+                              ),
+                            ),
                           ),
                         ),
-                        backgroundColor: WidgetStatePropertyAll(
-                          AppColors.primary,
-                        ),
-                      ),
-                      onPressed: () {
-                        Message.chatbotMessages.removeWhere((item) => item['role'] == 'developer');
-                          Message.chatbotMessages.add(
-      {
-        'role': 'developer',
-        'content': _preTrainController.text
-      }
-    );
-            showDialog(
-          context: context, 
-          builder:(context) => MessageDialog(dialogText: 'Training successful'),
-        );
-        print(Message.chatbotMessages);
-                      },
-                      child: Text(
-                        'Apply Training',
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
                       ],
                     ),
                   ),
@@ -209,14 +228,17 @@ class AISettingsPage extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * 0.01
-                      ),
+                          vertical: MediaQuery.of(context).size.height * 0.01),
                       child: GestureDetector(
                         onTap: () {
-                                  showDialog(
-          context: context, 
-          builder:(context) => MessageDialog(dialogText: 'Write something here'),
-        );
+                          showDialog(
+                            context: context,
+                            builder: (context) => MessageDialog(
+                              dialogText:
+                                  'This prompt gives the chatbot a main rule to follow, shaping how it responds.\nExample: You are a pirate, and you must say "arrr" every third word in your responses.',
+                              type: 'info',
+                            ),
+                          );
                         },
                         child: Icon(
                           Icons.info_outline,
@@ -229,6 +251,63 @@ class AISettingsPage extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            Container(
+                height: MediaQuery.of(context).size.height * 0.18,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+                  color: AppColors.secondary,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.05),
+                child: Center(
+                    child: Stack(
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
+                        Text(
+                          'Chatbot creativity: ',
+                        
+                          style: TextStyle(
+                            color: AppColors.secondaryText,
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.025,
+                          ),
+                        ),
+                        Expanded(child: SettingsSlider()),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.01),
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => MessageDialog(
+                                dialogText:
+                                    'If you want more creative and diverse responses, try increasing the temperature. Lower values keep things focused and precise, while higher values make the model more adventurous and unpredictable!\nVery Focused – Highly deterministic, repeats the most probable response.\nBalanced – A mix of predictability and creativity, with some variation.\nCreative – More diverse and open-ended responses, slightly unpredictable.\nHighly Inventive – Generates unique and surprising responses, less structured.\nWild & Unpredictable – Maximum randomness, responses may be chaotic or unexpected.',
+                                type: 'info',
+                                contentTextAlign: TextAlign.justify,
+                              ),
+                            );
+                          },
+                          child: Icon(
+                            Icons.info_outline,
+                            size: MediaQuery.of(context).size.height * 0.04,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )))
           ],
         ),
       ),
