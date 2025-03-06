@@ -5,7 +5,11 @@ class MessageDialog extends StatelessWidget {
   final String dialogText;
   final String type;
   final TextAlign contentTextAlign;
-  const MessageDialog ({super.key, required this.dialogText, this.type = 'error', this.contentTextAlign = TextAlign.center});
+  const MessageDialog(
+      {super.key,
+      required this.dialogText,
+      this.type = 'error',
+      this.contentTextAlign = TextAlign.center});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +24,33 @@ class MessageDialog extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon( 
-            (type=='error') ? Icons.error: (type=='success') ? Icons.check_box : Icons.info,
-            color: (type=='error') ? Colors.red : (type=='success') ? Colors.green : Colors.blueGrey,
+          Icon(
+            (type == 'error')
+                ? Icons.error
+                : (type == 'success')
+                    ? Icons.check_box
+                    : Icons.info,
+            color: (type == 'error')
+                ? Colors.red
+                : (type == 'success')
+                    ? Colors.green
+                    : Colors.blueGrey,
             size: MediaQuery.of(context).size.height * 0.04,
           ),
-          SizedBox(width:MediaQuery.of(context).size.width * 0.02),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.02),
           Text(
-            (type=='error') ? 'ERROR' : (type=='success') ? 'SUCCESS' : 'INFO',
+            (type == 'error')
+                ? 'ERROR'
+                : (type == 'success')
+                    ? 'SUCCESS'
+                    : 'INFO',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: (type=='error') ? Colors.red : (type=='success') ? Colors.green : Colors.blueGrey,
+              color: (type == 'error')
+                  ? Colors.red
+                  : (type == 'success')
+                      ? Colors.green
+                      : Colors.blueGrey,
               fontSize: MediaQuery.of(context).size.height * 0.04,
               fontWeight: FontWeight.bold,
             ),
@@ -39,7 +59,7 @@ class MessageDialog extends StatelessWidget {
       ),
       // Content
       content: Text(
-        dialogText, 
+        dialogText,
         textAlign: contentTextAlign,
         softWrap: true,
         style: TextStyle(
@@ -58,7 +78,8 @@ class MessageDialog extends StatelessWidget {
             ),
             backgroundColor: WidgetStateProperty.all(AppColors.primary),
             minimumSize: WidgetStateProperty.all(
-              Size(MediaQuery.of(context).size.width * 0.5,MediaQuery.of(context).size.height * 0.06),
+              Size(MediaQuery.of(context).size.width * 0.5,
+                  MediaQuery.of(context).size.height * 0.06),
             ),
           ),
           onPressed: () => Navigator.of(context).pop(),

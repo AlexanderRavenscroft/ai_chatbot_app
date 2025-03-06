@@ -10,8 +10,8 @@ class SettingsSlider extends StatefulWidget {
 }
 
 class _SettingsSliderState extends State<SettingsSlider> {
+  String label = 'Very Focused';
 
-  String label = 'Balanced';
   @override
   Widget build(BuildContext context) {
     return SliderTheme(
@@ -20,16 +20,17 @@ class _SettingsSliderState extends State<SettingsSlider> {
         thumbColor:  AppColors.primary,
         inactiveTrackColor: AppColors.neutral,
         trackHeight: MediaQuery.of(context).size.height * 0.03,
-        thumbShape: RoundSliderThumbShape(enabledThumbRadius: MediaQuery.of(context).size.height * 0.022),
+        thumbShape: RoundSliderThumbShape(
+          enabledThumbRadius: MediaQuery.of(context).size.height * 0.022
+        ),
         valueIndicatorColor: AppColors.primary,
-            valueIndicatorTextStyle: TextStyle(
-              color: AppColors.primaryText,
-              fontWeight: FontWeight.bold,
-              fontSize: MediaQuery.of(context).size.height * 0.02,
-            ),
+        valueIndicatorTextStyle: TextStyle(
+          color: AppColors.primaryText,
+          fontWeight: FontWeight.bold,
+          fontSize: MediaQuery.of(context).size.height * 0.02,
+        ),
       ),
       child: Slider(
-
         value: chatbotTemperature,
         onChanged: (value) {
           setState(() => chatbotTemperature = value);
@@ -42,6 +43,7 @@ class _SettingsSliderState extends State<SettingsSlider> {
       ),
     );
   }
+  
   String _getLabel(chatbotTemperature) {
     switch (chatbotTemperature) {
       case 0 || 0.2 || 0.4:

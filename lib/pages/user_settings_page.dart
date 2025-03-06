@@ -1,3 +1,4 @@
+import 'package:ai_chatbot_flask/components/settings_button.dart';
 import 'package:ai_chatbot_flask/components/settings_textfield.dart';
 import 'package:ai_chatbot_flask/services/providers/picture_provider.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
@@ -26,7 +27,6 @@ class UserSettingsPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
             Container(
@@ -82,29 +82,10 @@ class UserSettingsPage extends StatelessWidget {
                       fontSize: MediaQuery.of(context).size.height * 0.025,
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    child: TextButton(
-                      style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        backgroundColor: WidgetStatePropertyAll(
-                          AppColors.primary,
-                        ),
-                      ),
-                      onPressed: () => Provider.of<PictureProvider>(context, listen: false).pickImage(false),
-                      child: Text(
-                        'Upload your image',
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                  ),
+                  SettingsButton(
+                    text: 'Upload your image', 
+                    onPressed: () => Provider.of<PictureProvider>(context, listen: false).pickImage(false),
+                  )
                 ],
               ),
             ),

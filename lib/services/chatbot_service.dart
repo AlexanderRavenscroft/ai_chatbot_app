@@ -27,7 +27,7 @@ void callOpenAI(String userMessage, BuildContext context) async {
   final chatbot = OpenAIClient(
     model: "gpt-4o-mini", 
     maxTokens: 150, 
-    temperature: 0, 
+    temperature: chatbotTemperature, 
     frequencyPenalty: 0, 
     presencePenalty: 0, 
     storeMessages: true,
@@ -53,9 +53,11 @@ void callOpenAI(String userMessage, BuildContext context) async {
       }),
     );
     
+    // Get decoded data
     final decodedResponse = jsonDecode(response.body);
     final chatbotResponse = decodedResponse['choices'][0]['message']['content'];
 
+    // Send message
     if(context.mounted) {
       Provider.of<ChatProvider>(context, listen: false).sendMessage(chatbotResponse, true);
     }

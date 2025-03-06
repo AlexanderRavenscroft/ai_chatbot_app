@@ -17,15 +17,15 @@ class SlowModeTimerState extends State<SlowModeTimer> {
     return Consumer<TimerProvider>(
       builder: (context, timerProvider, child) {
         return (timerProvider.isRunning)
-        ? Text(
-          '0:${context.watch<TimerProvider>().seconds.toString().padLeft(2, '0')}',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: AppColors.descriptionText,
-            fontSize: MediaQuery.of(context).size.height * 0.024,
-          ),
-         )
-        : SizedBox.shrink();
+          ? Text(
+              '0:${context.watch<TimerProvider>().seconds.toString().padLeft(2, '0')}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: AppColors.descriptionText,
+                fontSize: MediaQuery.of(context).size.height * 0.024,
+              ),
+            )
+          : SizedBox.shrink();
       },
     );
   }

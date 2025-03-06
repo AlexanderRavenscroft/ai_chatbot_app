@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 class MessageTextfield extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
-  const MessageTextfield({super.key, required this.controller, required this.hintText});
+  const MessageTextfield(
+      {super.key, 
+      required this.controller,
+      required this.hintText
+    });
 
   @override
   Widget build(BuildContext context) {

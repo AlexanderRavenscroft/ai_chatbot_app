@@ -1,4 +1,5 @@
 import 'package:ai_chatbot_flask/components/menu_drawer_list_tile.dart';
+import 'package:ai_chatbot_flask/components/message_dialog.dart';
 import 'package:ai_chatbot_flask/pages/ai_settings_page.dart';
 import 'package:ai_chatbot_flask/pages/user_settings_page.dart';
 import 'package:ai_chatbot_flask/themes/themes.dart';
@@ -20,15 +21,17 @@ class MenuDrawer extends StatelessWidget {
               // DRAWER ICON
               DrawerHeader(
                 child: Center(
-                    child: Padding(
-                  padding: EdgeInsets.only(
-                      right: MediaQuery.of(context).size.width * 0.06),
-                  child: Icon(
-                    AppIcons.robot,
-                    size: MediaQuery.of(context).size.height * 0.1,
-                    color: AppColors.descriptionText,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      right: MediaQuery.of(context).size.width * 0.06,
+                    ),
+                    child: Icon(
+                      AppIcons.robot,
+                      size: MediaQuery.of(context).size.height * 0.1,
+                      color: AppColors.descriptionText,
+                    ),
                   ),
-                )),
+                ),
               ),
 
               // HOME
@@ -57,14 +60,31 @@ class MenuDrawer extends StatelessWidget {
               MenuDrawerListTile(
                 text: 'App Info',
                 icon: AppIcons.info,
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => MessageDialog(
+                      dialogText:
+                          'Simple AI chatbot app using an OpenAI gpt4o-mini model.\nThis app wont work unless you provide an API key in the .env file. ',
+                      type: 'info',
+                    ),
+                  );
+                },
               ),
 
               // AUTHOR SECTION
               MenuDrawerListTile(
                 text: 'About Author',
                 icon: AppIcons.raven,
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => MessageDialog(
+                      dialogText: 'Coming soon',
+                      type: 'info',
+                    ),
+                  );
+                },
               ),
             ],
           ),

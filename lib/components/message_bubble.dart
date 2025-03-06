@@ -8,23 +8,29 @@ import 'package:provider/provider.dart';
 class MessageBubble extends StatelessWidget {
   final String text;
   final bool isAI;
+
   const MessageBubble({super.key, required this.text, required this.isAI});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    // Whole message padding
+    return Padding( 
       padding: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.01,
         vertical: MediaQuery.of(context).size.height * 0.005,
       ),
       child: Column(
         crossAxisAlignment:
-        isAI ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+            isAI ? CrossAxisAlignment.start : CrossAxisAlignment.end,
         children: [
           Align(
-            alignment: isAI?  Alignment.topLeft : Alignment.topRight,
+            alignment: isAI ? Alignment.topLeft : Alignment.topRight,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.1,
+              ),
+
+              // Sender's Name
               child: Consumer<NameProvider>(
                 builder: (context, nameProvider, child) {
                   return Text(
@@ -32,12 +38,14 @@ class MessageBubble extends StatelessWidget {
                     style: TextStyle(
                       color: AppColors.descriptionText,
                       fontSize: MediaQuery.of(context).size.height * 0.018,
-                    )
+                    ),
                   );
-                }
+                },
               ),
-            )
+            ),
           ),
+
+          // The bubble itself
           Container(
             margin: EdgeInsets.only(
               left: isAI ? MediaQuery.of(context).size.width * 0.075 : 0,
@@ -68,27 +76,31 @@ class MessageBubble extends StatelessWidget {
               softWrap: true,
             ),
           ),
-          Consumer<PictureProvider>(builder: (context, pictureProvider, child) {
-            return CircleAvatar(
-              backgroundColor: AppColors.secondary,
-              radius: MediaQuery.of(context).size.height * 0.022,
-              backgroundImage: isAI
-                  ? (UserModel.userChatbot.image != null
-                      ? FileImage(UserModel.userChatbot.image!)
-                      : null)
-                  : (UserModel.user.image != null
-                      ? FileImage(UserModel.user.image!)
-                      : null),
-              child: (isAI && UserModel.userChatbot.image == null) ||
-                      (!isAI && UserModel.user.image == null)
-                  ? Icon(
-                      Icons.person,
-                      size: MediaQuery.of(context).size.height * 0.03,
-                      color: AppColors.descriptionText,
-                    )
-                  : null,
-            );
-          }),
+
+          // Sender's picture
+          Consumer<PictureProvider>(
+            builder: (context, pictureProvider, child) {
+              return CircleAvatar(
+                backgroundColor: AppColors.secondary,
+                radius: MediaQuery.of(context).size.height * 0.022,
+                backgroundImage: isAI
+                    ? (UserModel.userChatbot.image != null
+                        ? FileImage(UserModel.userChatbot.image!)
+                        : null)
+                    : (UserModel.user.image != null
+                        ? FileImage(UserModel.user.image!)
+                        : null),
+                child: (isAI && UserModel.userChatbot.image == null) ||
+                        (!isAI && UserModel.user.image == null)
+                    ? Icon(
+                        isAI ? AppIcons.robot : Icons.person,
+                        size: MediaQuery.of(context).size.height * 0.03,
+                        color: AppColors.descriptionText,
+                      )
+                    : null,
+              );
+            },
+          ),
         ],
       ),
     );

@@ -31,7 +31,6 @@ class AppColors {
 
 class AppIcons {
   AppIcons._();
-
   static const _kFontFam = 'MyFlutterApp';
   static const String? _kFontPkg = null;
   static const IconData person = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);

@@ -62,6 +62,7 @@ class ChatPage extends StatelessWidget {
                     child: SlowModeTimer()
                   ),
                   Positioned(
+                    
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -99,12 +100,14 @@ class ChatPage extends StatelessWidget {
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.11,
                     child: Text(
-                      'AI - generated. For refrence only',
+                      'AI - generated, for refrence only',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: AppColors.descriptionText,
                         fontSize: MediaQuery.of(context).size.height * 0.018,
-                      ),
+                      ).copyWith(
+                        fontStyle: FontStyle.italic,
+                      )
                     ),
                   ),
                 ],

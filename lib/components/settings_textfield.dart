@@ -7,8 +7,13 @@ class SettingsTextfield extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool isAI;
-  const SettingsTextfield(
-  {super.key, required this.controller, required this.hintText, required this.isAI});
+
+  const SettingsTextfield({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.isAI,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +36,10 @@ class SettingsTextfield extends StatelessWidget {
         color: AppColors.secondaryText,
         fontSize: MediaQuery.of(context).size.height * 0.025,
       ),
-      onChanged: (value) =>
-        Provider.of<NameProvider>(context, listen: false).refreshName(isAI, value)
+      onChanged: (value) => Provider.of<NameProvider>(
+        context,
+        listen: false,
+      ).refreshName(isAI, value),
     );
   }
 }

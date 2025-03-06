@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Anti message spam timer. 15 secs is enough, to avoid OpenAI limits.
 class TimerProvider extends ChangeNotifier{
   int _seconds = 15;
   bool _isRunning = false;

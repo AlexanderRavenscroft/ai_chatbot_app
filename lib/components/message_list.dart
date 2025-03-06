@@ -21,8 +21,8 @@ class _MessageListState extends State<MessageList> {
             itemBuilder: (context, index) {
               return Align(
                 alignment: (Message.messages[index].isAI)
-                    ? Alignment.topLeft
-                    : Alignment.topRight,
+                  ? Alignment.topLeft
+                  : Alignment.topRight,
                 child: MessageBubble(
                   text: Message.messages[index].message,
                   isAI: Message.messages[index].isAI ? true : false,
@@ -30,7 +30,7 @@ class _MessageListState extends State<MessageList> {
               );
             },
           ),
-        ),
+        ), 
         (isLoading) ? CircularProgressIndicator() : SizedBox.shrink(),
       ],
     );
