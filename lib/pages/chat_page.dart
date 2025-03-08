@@ -1,14 +1,14 @@
-import 'package:ai_chatbot_flask/components/message_dialog.dart';
-import 'package:ai_chatbot_flask/components/menu_drawer.dart';
-import 'package:ai_chatbot_flask/components/message_list.dart';
-import 'package:ai_chatbot_flask/components/message_textfield.dart';
-import 'package:ai_chatbot_flask/components/slow_mode_timer.dart';
-import 'package:ai_chatbot_flask/models/user_model.dart';
-import 'package:ai_chatbot_flask/services/providers/chat_provider.dart';
-import 'package:ai_chatbot_flask/services/chatbot_service.dart';
-import 'package:ai_chatbot_flask/services/providers/name_provider.dart';
-import 'package:ai_chatbot_flask/services/providers/timer_provider.dart';
-import 'package:ai_chatbot_flask/themes/themes.dart';
+import 'package:ai_chatbot/components/menu_drawer.dart';
+import 'package:ai_chatbot/components/message_dialog.dart';
+import 'package:ai_chatbot/components/message_list.dart';
+import 'package:ai_chatbot/components/message_textfield.dart';
+import 'package:ai_chatbot/components/slow_mode_timer.dart';
+import 'package:ai_chatbot/models/user_model.dart';
+import 'package:ai_chatbot/services/chatbot_service.dart';
+import 'package:ai_chatbot/services/providers/chat_provider.dart';
+import 'package:ai_chatbot/services/providers/name_provider.dart';
+import 'package:ai_chatbot/services/providers/timer_provider.dart';
+import 'package:ai_chatbot/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

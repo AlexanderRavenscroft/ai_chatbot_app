@@ -1,5 +1,5 @@
-import 'package:ai_chatbot_flask/services/chatbot_service.dart';
-import 'package:ai_chatbot_flask/themes/themes.dart';
+import 'package:ai_chatbot/services/chatbot_service.dart';
+import 'package:ai_chatbot/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class SettingsSlider extends StatefulWidget {

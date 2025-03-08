@@ -1,5 +1,5 @@
-import 'package:ai_chatbot_flask/services/providers/timer_provider.dart';
-import 'package:ai_chatbot_flask/themes/themes.dart';
+import 'package:ai_chatbot/services/providers/timer_provider.dart';
+import 'package:ai_chatbot/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

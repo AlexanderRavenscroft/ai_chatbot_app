@@ -1,8 +1,8 @@
-import 'package:ai_chatbot_flask/components/menu_drawer_list_tile.dart';
-import 'package:ai_chatbot_flask/components/message_dialog.dart';
-import 'package:ai_chatbot_flask/pages/ai_settings_page.dart';
-import 'package:ai_chatbot_flask/pages/user_settings_page.dart';
-import 'package:ai_chatbot_flask/themes/themes.dart';
+import 'package:ai_chatbot/components/menu_drawer_list_tile.dart';
+import 'package:ai_chatbot/components/message_dialog.dart';
+import 'package:ai_chatbot/pages/ai_settings_page.dart';
+import 'package:ai_chatbot/pages/user_settings_page.dart';
+import 'package:ai_chatbot/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class MenuDrawer extends StatelessWidget {
@@ -80,7 +80,7 @@ class MenuDrawer extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => MessageDialog(
-                      dialogText: 'Coming soon',
+                      dialogText: "Hi! I am Alexander Ravenscroft, a passionate Flutter mobile app developer from Poland.\nI am 19 years old and have been programming for over three years. While I’m still at the beginning of my journey in mobile app development, I love building elegant, cross-platform applications that provide seamless user experiences. I enjoy taking on new challenges and turning ideas into functional apps.\nWhen I’m not coding, you’ll probably find me exploring UI/UX design trends, hitting the gym or sailing.\nLet’s connect and create something amazing together!!",
                       type: 'info',
                     ),
                   );

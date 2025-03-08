@@ -1,7 +1,7 @@
-import 'package:ai_chatbot_flask/components/message_dialog.dart';
-import 'package:ai_chatbot_flask/models/chatbot_model.dart';
-import 'package:ai_chatbot_flask/models/message_model.dart';
-import 'package:ai_chatbot_flask/services/providers/chat_provider.dart';
+import'package:ai_chatbot/components/message_dialog.dart';
+import'package:ai_chatbot/models/chatbot_model.dart';
+import'package:ai_chatbot/models/message_model.dart';
+import'package:ai_chatbot/services/providers/chat_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';

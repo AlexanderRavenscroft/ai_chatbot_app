@@ -1,7 +1,7 @@
-import 'package:ai_chatbot_flask/components/message_bubble.dart';
-import 'package:ai_chatbot_flask/services/chatbot_service.dart';
+import 'package:ai_chatbot/components/message_bubble.dart';
+import 'package:ai_chatbot/services/chatbot_service.dart';
 import 'package:flutter/material.dart';
-import 'package:ai_chatbot_flask/models/message_model.dart';
+import 'package:ai_chatbot/models/message_model.dart';
 
 class MessageList extends StatefulWidget {
   const MessageList({super.key});

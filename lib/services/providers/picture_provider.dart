@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ai_chatbot_flask/models/user_model.dart';
+import'package:ai_chatbot/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

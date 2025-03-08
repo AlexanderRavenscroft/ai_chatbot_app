@@ -1,4 +1,4 @@
-import 'package:ai_chatbot_flask/models/user_model.dart';
+import'package:ai_chatbot/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 // Updates and refreshes names

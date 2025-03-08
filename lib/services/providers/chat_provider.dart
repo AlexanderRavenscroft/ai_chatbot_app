@@ -1,4 +1,4 @@
-import 'package:ai_chatbot_flask/models/message_model.dart';
+import 'package:ai_chatbot/models/message_model.dart';
 import 'package:flutter/material.dart';
 
 /// Sends messages and updates message list

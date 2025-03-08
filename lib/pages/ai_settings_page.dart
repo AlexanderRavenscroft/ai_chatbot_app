@@ -1,10 +1,10 @@
-import 'package:ai_chatbot_flask/components/message_dialog.dart';
-import 'package:ai_chatbot_flask/components/settings_button.dart';
-import 'package:ai_chatbot_flask/components/settings_slider.dart';
-import 'package:ai_chatbot_flask/components/settings_textfield.dart';
-import 'package:ai_chatbot_flask/models/message_model.dart';
-import 'package:ai_chatbot_flask/services/providers/picture_provider.dart';
-import 'package:ai_chatbot_flask/themes/themes.dart';
+import 'package:ai_chatbot/components/message_dialog.dart';
+import 'package:ai_chatbot/components/settings_button.dart';
+import 'package:ai_chatbot/components/settings_slider.dart';
+import 'package:ai_chatbot/components/settings_textfield.dart';
+import 'package:ai_chatbot/models/message_model.dart';
+import 'package:ai_chatbot/services/providers/picture_provider.dart';
+import 'package:ai_chatbot/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -96,7 +96,7 @@ class AISettingsPage extends StatelessWidget {
             label,
             style: TextStyle(
               color: AppColors.secondaryText,
-              fontSize: MediaQuery.of(context).size.height * 0.025,
+              fontSize: MediaQuery.of(context).size.height * 0.02,
             ),
           ),
           SizedBox(
@@ -128,7 +128,7 @@ class AISettingsPage extends StatelessWidget {
                 'Custom Training:',
                 style: TextStyle(
                   color: AppColors.secondaryText,
-                  fontSize: MediaQuery.of(context).size.height * 0.025,
+                  fontSize: MediaQuery.of(context).size.height * 0.02,
                 ),
               ),
               Expanded(
@@ -145,7 +145,7 @@ class AISettingsPage extends StatelessWidget {
                         keyboardType: TextInputType.multiline,
                         style: TextStyle(
                           color: AppColors.secondaryText,
-                          fontSize: MediaQuery.of(context).size.height * 0.022,
+                          fontSize: MediaQuery.of(context).size.height * 0.02,
                         ),
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
@@ -208,7 +208,7 @@ class AISettingsPage extends StatelessWidget {
 
   Widget _buildCreativitySection(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.18,
+      height: MediaQuery.of(context).size.height * 0.12,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         color: AppColors.secondary,
@@ -226,7 +226,7 @@ class AISettingsPage extends StatelessWidget {
                 'Chatbot creativity:',
                 style: TextStyle(
                   color: AppColors.secondaryText,
-                  fontSize: MediaQuery.of(context).size.height * 0.025,
+                  fontSize: MediaQuery.of(context).size.height * 0.022,
                 ),
               ),
               Expanded(child: SettingsSlider()),

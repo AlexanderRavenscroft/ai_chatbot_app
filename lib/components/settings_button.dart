@@ -1,4 +1,4 @@
-import 'package:ai_chatbot_flask/themes/themes.dart';
+import 'package:ai_chatbot/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class SettingsButton extends StatelessWidget {
@@ -25,7 +25,10 @@ class SettingsButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyle(color: AppColors.primaryText),
+          style: TextStyle(
+            color: AppColors.primaryText,
+            fontSize: MediaQuery.of(context).size.height * 0.016,
+          ),
         ),
       ),
     );
